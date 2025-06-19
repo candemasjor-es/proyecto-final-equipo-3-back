@@ -14,5 +14,5 @@ const dbConnection = async () => {
         throw error;
     }
 };
-dbConnection().catch(console.dir);
+
 module.exports = { dbConnection };
