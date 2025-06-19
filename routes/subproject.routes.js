@@ -17,3 +17,5 @@ router.post("/", createSubproject);
 router.post("/", addUserToSubproject);
 router.delete("/", removeSubroject);
 router.delete("/", removeUserToSubproject);
+
+module.exports = router;

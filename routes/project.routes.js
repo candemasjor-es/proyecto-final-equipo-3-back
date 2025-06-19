@@ -11,3 +11,5 @@ router.get("/", getAllProjects);
 router.get("/", getProjectById);
 router.post("/", createProject);
 router.delete("/", removeProject);
+
+module.exports = router;
