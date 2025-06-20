@@ -16,8 +16,6 @@ const main = async () => {
 
     dbConnection();
 
-    db
-
     app.listen(port, () => {
         console.log(`App listening on ${port}`);
     });
