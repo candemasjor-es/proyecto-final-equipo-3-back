@@ -18,7 +18,7 @@ const main = async () => {
   app.use("/", userRoutes);
   app.use("/proyectos", projectRouter);
   app.use("/subproyectos", subprojectRouter);
-  app.use("/hours", hoursRouter);
+  app.use("/horas", hoursRouter);
 
   app.listen(port, () => {
     console.log(`App listening on ${port}`);

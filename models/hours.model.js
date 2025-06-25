@@ -18,6 +18,10 @@ const hoursSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  date: {
+    type: Date,
+    required: true,
+  },
 });
 
 const Hours = mongoose.model("Hours", hoursSchema);
