@@ -42,9 +42,11 @@ const getHoursPerUser = async (req, res) => {
       },
     };
 
-    const hoursList = await Hours.find(query);
+    const hoursList = await Hours.find(query)
+      .populate("id_subproject", "name")
+      .sort({ date: 1 });
 
-    if (hoursList && hoursList.length > 0) {
+    if (hoursList.length > 0) {
       res.status(200).send(hoursList);
     } else {
       res
