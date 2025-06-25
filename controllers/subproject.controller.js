@@ -1,4 +1,4 @@
-const Subproject = require("../models/subproject.model");
+const { Subproject } = require("../models/subproject.model");
 
 const getAllSubprojectsByProjectId = async (req, res) => {
   const projectId = req.params._id;
@@ -46,7 +46,15 @@ const createSubproject = async (req, res) => {
   }
 };
 
-const removeSubroject = async (req, res) => {};
+const removeSubroject = async (req, res) => {
+  const subprojectId = req.params._id;
+  const selectedSubproject = await Subproject.findByIdAndDelete(subprojectId);
+  if (selectedSubproject) {
+    res.status(200).send("Subroyecto borrado correctamente");
+  } else {
+    res.status(404).send("Ha habido un error borrando el subproyecto");
+  }
+};
 
 const addUsersToSubproject = async (req, res) => {
   const subprojectId = req.params._id;
