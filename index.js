@@ -25,9 +25,7 @@ const main = async () => {
   app.use("/api/firmas", signRoutes);
   app.use("/firmas", express.static(path.join(__dirname, "public/firmas")));
 
-  app.listen(port, () => {
-    console.log(`App listening on ${port}`);
-  });
+  dbConnection();
 
   dbConnection();
 };
