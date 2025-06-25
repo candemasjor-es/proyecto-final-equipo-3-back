@@ -5,6 +5,7 @@ const express = require("express");
 const { dbConnection } = require("./db");
 
 const projectRouter = require("./routes/project.routes");
+const subprojectRouter = require("./routes/subproject.routes");
 
 const main = async () => {
   const app = express();
@@ -13,6 +14,7 @@ const main = async () => {
 
   //app.use("/", console.log("test"));
   app.use("/proyectos", projectRouter);
+  app.use("/subproyectos", subprojectRouter);
 
   app.listen(port, () => {
     console.log(`App listening on ${port}`);

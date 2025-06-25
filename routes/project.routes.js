@@ -8,8 +8,8 @@ const {
 } = require("../controllers/project.controller");
 
 router.get("/", getAllProjects);
-router.get("/", getProjectById);
+router.get("/:_id", getProjectById);
 router.post("/", createProject);
-router.delete("/", removeProject);
+router.delete("/:_id", removeProject);
 
 module.exports = router;

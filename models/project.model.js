@@ -5,6 +5,10 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  category: {
+    type: String,
+    enum: ["Proyecto europeo", "Proyecto", "Vacaciones", "Festivo", "Otro"],
+  },
 });
 
 module.exports = mongoose.model("Project", projectSchema);

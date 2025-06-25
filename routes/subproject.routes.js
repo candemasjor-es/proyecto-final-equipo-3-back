@@ -7,15 +7,15 @@ const {
   createSubproject,
   removeSubroject,
   removeUserToSubproject,
-  addUserToSubproject,
+  addUsersToSubproject,
 } = require("../controllers/subproject.controller");
 
-router.get("/", getAllUsersBySubproject);
-router.get("/", getAllSubprojectsByProjectId);
-router.get("/", getSubprojectById);
+router.get("/users/:_id", getAllUsersBySubproject);
+router.get("/all/:_id", getAllSubprojectsByProjectId);
+router.get("/:_id", getSubprojectById);
 router.post("/", createSubproject);
-router.post("/", addUserToSubproject);
-router.delete("/", removeSubroject);
-router.delete("/", removeUserToSubproject);
+router.patch("/:_id", addUsersToSubproject);
+router.delete("/:_id", removeSubroject);
+router.delete("/user/:_id", removeUserToSubproject);
 
 module.exports = router;
