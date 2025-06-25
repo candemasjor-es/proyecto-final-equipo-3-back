@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { JWT_SECRET } = require("../config");
@@ -21,3 +22,4 @@ const userSchema = new Schema({
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User };
+

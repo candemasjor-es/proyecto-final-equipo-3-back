@@ -3,10 +3,9 @@ const { MONGO_URI } = require("./config");
 const clientOptions = {
     serverApi: { version: "1", strict: true, deprecationErrors: true },
 };
-// Conectarse a la db
+
 const dbConnection = async () => {
     try {
-        // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
         await mongoose.connect(MONGO_URI, clientOptions);
         console.log("You successfully connected to MongoDB!");
     } catch (error) {
@@ -14,5 +13,4 @@ const dbConnection = async () => {
         throw error;
     }
 };
-
 module.exports = { dbConnection };
