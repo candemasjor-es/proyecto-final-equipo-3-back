@@ -6,7 +6,7 @@ const {
   getSubprojectById,
   createSubproject,
   removeSubroject,
-  removeUserToSubproject,
+  getSubprojectsByUser,
   addUsersToSubproject,
 } = require("../controllers/subproject.controller");
 
@@ -16,6 +16,6 @@ router.get("/:_id", getSubprojectById);
 router.post("/", createSubproject);
 router.patch("/:_id", addUsersToSubproject);
 router.delete("/:_id", removeSubroject);
-router.delete("/user/:_id", removeUserToSubproject);
+router.get("/all/user/:_id", getSubprojectsByUser);
 
 module.exports = router;

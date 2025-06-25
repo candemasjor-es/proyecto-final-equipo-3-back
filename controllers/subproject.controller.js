@@ -1,4 +1,6 @@
 const { Subproject } = require("../models/subproject.model");
+const mongoose = require("mongoose");
+const { Project } = require("../models/project.model");
 
 const getAllSubprojectsByProjectId = async (req, res) => {
   const projectId = req.params._id;
@@ -79,13 +81,45 @@ const addUsersToSubproject = async (req, res) => {
   }
 };
 
-const removeUserToSubproject = async (req, res) => {};
+const getSubprojectsByUser = async (req, res) => {
+  const userId = req.params._id;
+  const userObjectId = new mongoose.Types.ObjectId(userId);
+
+  const subprojects = await Subproject.find({
+    usersId: { $in: [userObjectId] },
+  }).populate({
+    path: "projectId",
+    model: "Project",
+    select: "name",
+  });
+
+  const grouped = {};
+
+  subprojects.forEach((sp) => {
+    const projectName = sp.projectId?.name || "Sin nombre de proyecto";
+
+    if (!grouped[projectName]) {
+      grouped[projectName] = {
+        name: projectName,
+        subprojects: [],
+      };
+    }
+
+    grouped[projectName].subprojects.push({
+      name: sp.name,
+    });
+  });
+
+  const result = Object.values(grouped);
+
+  res.json(result);
+};
 
 module.exports = {
   createSubproject,
   removeSubroject,
   addUsersToSubproject,
-  removeUserToSubproject,
+  getSubprojectsByUser,
   getAllSubprojectsByProjectId,
   getAllUsersBySubproject,
   getSubprojectById,

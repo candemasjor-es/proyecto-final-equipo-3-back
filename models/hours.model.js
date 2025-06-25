@@ -1,16 +1,14 @@
 const mongoose = require("mongoose");
-const { User } = require("../models/user.model");
-const { Subproject } = require("../models/subproject.model");
 
 const hoursSchema = new mongoose.Schema({
   id_user: {
     type: mongoose.Schema.ObjectId,
-    ref: User,
+    ref: "User",
     required: true,
   },
   id_subproject: {
     type: mongoose.Schema.ObjectId,
-    ref: Subproject,
+    ref: "Subproject",
     required: true,
   },
 
