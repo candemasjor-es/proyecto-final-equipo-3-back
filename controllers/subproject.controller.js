@@ -1,4 +1,4 @@
-const Subproject = require("../models/subproject.model");
+const { Subproject } = require("../models/subproject.model");
 
 const getAllSubprojectsByProjectId = async (req, res) => {
   const projectId = req.params._id;
