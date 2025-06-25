@@ -5,8 +5,8 @@ const { JWT_SECRET } = require("../config");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    nombre: { type: String, required: true },
-    apellidos: { type: String, required: true },
+    name: { type: String, required: true },
+    surnames: { type: String, required: true },
     dni: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },

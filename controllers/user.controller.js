@@ -1,5 +1,6 @@
 const { User } = require("../models/user.model");
 const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 
@@ -28,9 +29,12 @@ const login = async (req, res) => {
     // Generar un token con el userId en el payload .sign()
     // y un jwt secret
     const accessToken = jsonwebtoken.sign({ userId: user._id }, JWT_SECRET);
-    res.send({ accessToken });
+    res.send({
+        accessToken,
+        rol: user.rol,
+        dni: user.dni,
+    });
 };
-
 const passwordReset = async (req, res) => {
     try {
         const { newPassword } = req.body;
