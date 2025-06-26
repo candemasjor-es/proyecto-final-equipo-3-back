@@ -107,6 +107,7 @@ const getSubprojectsByUser = async (req, res) => {
 
     grouped[projectName].subprojects.push({
       name: sp.name,
+      _id: sp._id,
     });
   });
 
